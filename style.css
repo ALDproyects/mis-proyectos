@@ -1,24 +1,31 @@
-/* --- Variables CSS para un diseño consistente y fácil de modificar --- */
+/* ---------------------------------------------------- */
+/* 1. Variables y Reset Básico (Paleta Tema Oscuro) */
+/* ---------------------------------------------------- */
 :root {
-    --primary-color: #28a745; /* Verde vibrante para botones de descarga y acentos */
-    --primary-color-dark: #218838; /* Un verde más oscuro para el hover */
-    --secondary-color: #adb5bd; /* Gris claro para texto secundario o bordes en fondo oscuro */
-    --text-color-dark: #212529; /* Texto muy oscuro (para casos específicos si los hay en fondo blanco) */
-    --text-color-light: #f8f9fa; /* Texto claro principal */
-    --background-dark: #212529; /* Fondo principal muy oscuro */
-    --background-medium-dark: #343a40; /* Fondo para secciones o tarjetas ligeramente menos oscuro */
-    --header-footer-bg-color: #1a1a1a; /* Negro muy profundo para encabezado y pie de página */
+    /* Paleta de Colores "Catálogo Oscuro y Usabilidad" */
+    --color-primary-site: #3C8CE7; /* Azul Principal */
+    --color-primary-dark: #276AB8;
+    --color-accent-cta: #59C537; /* Verde para la Descarga */
+    
+    /* CAMBIOS CLAVE PARA EL MODO OSCURO */
+    --color-background-main: #121212; /* Fondo Principal (Negro Oscuro) */
+    --color-background-content: #1D1D1D; /* Fondo de Contenido/Tarjetas (Gris Oscuro) */
+    --color-text-main: #FFFFFF; /* Texto Principal (Blanco Puro) */
+    --color-text-secondary: #B0B0B0; /* Gris Claro para descripciones */
 
-    --shadow-small: 0 2px 4px rgba(0, 0, 0, 0.4); /* Sombras más visibles en fondo oscuro */
-    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.5);
-    --shadow-large: 0 8px 16px rgba(0, 0, 0, 0.6);
-
-    --font-heading: 'Montserrat', sans-serif;
+    /* Fuentes */
+    --font-heading: 'Roboto', sans-serif;
     --font-body: 'Open Sans', sans-serif;
+
+    /* Espaciado y Sombras */
+    --spacing-default: 1.5rem;
+    --border-radius-item: 8px; 
+    --shadow-item: 0 4px 15px rgba(0, 0, 0, 0.4); 
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.6);
 }
 
-/* --- Reset Básico para consistencia entre navegadores --- */
-*, *::before, *::after {
+/* Reset y Base */
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -26,444 +33,356 @@
 
 body {
     font-family: var(--font-body);
-    line-height: 1.6;
-    color: var(--text-color-light); /* Texto principal claro */
-    background-color: var(--background-dark); /* Fondo general oscuro */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    color: var(--color-text-main); 
+    background-color: var(--color-background-main); 
+    line-height: 1.5;
     scroll-behavior: smooth;
 }
 
-/* --- Estilos Globales y de Contenedor --- */
-.site-header,
-main,
-.site-footer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-h1, h2, h3 {
-    font-family: var(--font-heading);
-    color: var(--text-color-light); /* Títulos claros */
-    margin-bottom: 0.8em;
-    font-weight: 700;
-}
-
-h1 { font-size: 2.5em; }
-h2 { font-size: 2em; }
-h3 { font-size: 1.5em; }
-
-p {
-    margin-bottom: 1em;
-}
-
 a {
-    color: var(--primary-color); /* Enlaces en color verde de acento */
     text-decoration: none;
-    transition: color 0.3s ease;
+    color: var(--color-primary-site);
+    transition: color 0.2s;
 }
 
 a:hover {
-    color: var(--secondary-color); /* Gris claro al pasar el ratón */
+    color: var(--color-primary-dark);
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+/* ---------------------------------------------------- */
+/* 2. Tipografía y Estructura */
+/* ---------------------------------------------------- */
+h2 {
+    font-family: var(--font-heading);
+    font-size: 2.1rem; 
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 2rem;
+    color: var(--color-primary-site); /* Títulos H2 en azul para contraste */
+    padding-left: 0.6rem;
+    border-left: 5px solid var(--color-primary-site); 
+    display: block; 
 }
 
-/* --- Encabezado y Navegación --- */
+h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text-main); /* H3 en blanco */
+    margin-bottom: 0.5rem;
+}
+
+.category-title {
+    font-size: 1.5rem !important; 
+    font-weight: 600;
+    color: var(--color-text-main) !important;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border: none;
+    padding-left: 0;
+}
+
+hr {
+    border-top: 1px solid #333333; /* Línea separadora oscura */
+    margin-bottom: 1.5rem;
+    opacity: 0.5;
+}
+
+main {
+    max-width: 1300px; 
+    margin: 0 auto;
+    display: flex; 
+    gap: var(--spacing-default);
+    padding: 1rem var(--spacing-default);
+}
+
+/* ---------------------------------------------------- */
+/* 3. Encabezado y Navegación */
+/* ---------------------------------------------------- */
 .site-header {
-    background-color: var(--header-footer-bg-color); /* Fondo oscuro muy profundo */
-    box-shadow: var(--shadow-small);
-    padding: 15px 20px;
+    background-color: var(--color-background-content);
+    border-bottom: 4px solid var(--color-primary-site);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 50;
 }
 
 .main-nav {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0.8rem var(--spacing-default);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-.site-title {
-    font-size: 1.8em;
-    margin: 0;
-    color: var(--text-color-light); /* Título del sitio claro */
+.site-title-branding {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary-site);
+    letter-spacing: 1px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    gap: 1.5rem;
 }
 
 .nav-links a {
-    color: var(--text-color-light); /* Enlaces de navegación claros */
-    font-weight: 600;
-    padding: 5px 0;
-    position: relative;
+    color: var(--color-text-secondary);
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--primary-color); /* Subrayado verde */
-    transition: width 0.3s ease-in-out;
+.nav-links a:hover {
+    color: var(--color-primary-site);
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
+/* ---------------------------------------------------- */
+/* 4. Layout Principal (Barra Lateral y Contenido) */
+/* ---------------------------------------------------- */
+.sidebar {
+    width: 280px; 
+    flex-shrink: 0;
+    padding: var(--spacing-default); 
+    background-color: var(--color-background-content);
+    border-radius: var(--border-radius-item);
+    box-shadow: var(--shadow-item);
+    height: fit-content; 
 }
 
-/* --- Sección Hero --- */
+.sidebar h3 {
+    color: var(--color-text-main);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #333333; /* Borde oscuro */
+    padding-bottom: 0.5rem;
+}
+
+.sidebar-nav-links {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-nav-links a {
+    display: block;
+    color: var(--color-text-secondary);
+    padding: 0.7rem 0; 
+    border-left: 4px solid transparent;
+    transition: all 0.2s;
+}
+
+.sidebar-nav-links a:hover, .sidebar-nav-links a.active {
+    color: var(--color-primary-site);
+    background-color: #2A2A2A; /* Fondo hover sutilmente más claro que el fondo */
+    border-left: 4px solid var(--color-primary-site);
+    padding-left: 15px; 
+}
+
+.content-area {
+    flex-grow: 1;
+    min-width: 0; 
+    padding-top: 0.5rem;
+}
+
+/* ---------------------------------------------------- */
+/* 5. Sección Hero (Banner) */
+/* ---------------------------------------------------- */
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/hero-bg.jpg') no-repeat center center/cover; /* Puedes cambiar 'hero-bg.jpg' */
-    background-color: var(--background-medium-dark); /* Color de fallback si la imagen no carga */
-    color: var(--text-color-light);
+    background-color: var(--color-primary-site);
+    color: var(--color-background-content);
+    padding: 2.5rem var(--spacing-default);
+    border-radius: var(--border-radius-item);
+    margin-bottom: var(--spacing-default);
     text-align: center;
-    padding: 100px 20px;
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 400px;
-    box-shadow: var(--shadow-medium);
-    border-radius: 8px;
-    overflow: hidden;
 }
 
 .hero-content h2 {
-    font-size: 3em;
-    margin-bottom: 15px;
-    color: var(--text-color-light);
+    color: var(--color-background-content);
+    border-left: none;
+    text-align: center;
 }
 
 .hero-content p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.button {
-    display: inline-block;
-    padding: 12px 25px;
-    border-radius: 5px;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-}
-
-.button-primary {
-    background-color: var(--primary-color); /* Verde */
-    color: var(--text-color-light);
-    box-shadow: var(--shadow-small);
-}
-
-.button-primary:hover {
-    background-color: var(--primary-color-dark); /* Verde más oscuro al pasar el ratón */
-    box-shadow: var(--shadow-medium);
-    transform: translateY(-2px);
-}
-
-.button-download {
-    background-color: var(--primary-color); /* También verde para la descarga */
-    color: var(--text-color-light);
-    padding: 8px 15px;
-    font-size: 0.9em;
-    box-shadow: var(--shadow-small);
-}
-
-.button-download:hover {
-    background-color: var(--primary-color-dark); /* Verde más oscuro al pasar el ratón */
-    box-shadow: var(--shadow-medium);
-    transform: translateY(-1px);
-}
-
-.button-download i {
-    margin-right: 8px;
-}
-
-/* --- Sección de Proyectos --- */
-.projects-section {
-    padding: 60px 0;
-    text-align: center;
-    background-color: var(--background-dark); /* Fondo oscuro */
-}
-
-.projects-section h2 {
-    margin-bottom: 40px;
-    color: var(--text-color-light); /* Título claro */
-}
-
-.proyectos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 800px;
     margin: 0 auto;
 }
 
+
+/* ---------------------------------------------------- */
+/* 6. Tarjetas de Proyecto (Ficha de Software con Spotlight) */
+/* ---------------------------------------------------- */
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-default);
+    margin-top: 1.5rem;
+    position: relative; 
+}
+
 .proyecto-item {
-    background-color: var(--background-medium-dark); /* Fondo de tarjeta un poco más claro que el body */
-    border-radius: 8px;
+    background-color: var(--color-background-content);
+    border-radius: var(--border-radius-item);
+    box-shadow: var(--shadow-item);
+    border: 1px solid #333333; /* Borde sutil */
     overflow: hidden;
-    box-shadow: var(--shadow-small);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
 }
 
 .proyecto-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-medium);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-5px) scale(1.02); 
+    z-index: 10; 
+    border-color: var(--color-primary-site); 
+}
+
+/* Efecto Spotlight: Oscurecer el resto al hacer hover en uno */
+.proyectos-grid:hover .proyecto-item:not(:hover) {
+    opacity: 0.7; 
+    filter: brightness(0.9);
+    transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
 .proyecto-img-container {
-    height: 200px;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.proyecto-img-container img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.proyecto-item:hover .proyecto-img-container img {
-    transform: scale(1.05);
+    height: 180px; 
+    overflow: hidden;
+    margin: 0;
 }
 
 .proyecto-details {
-    padding: 20px;
-    flex-grow: 1;
-    text-align: left;
-    color: var(--text-color-light);
-}
-
-.proyecto-item h3 {
-    font-size: 1.3em;
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: var(--text-color-light);
+    padding: 1.2rem var(--spacing-default) 0.8rem;
 }
 
 .proyecto-details p {
-    font-size: 0.95em;
-    color: var(--secondary-color);
-    line-height: 1.5;
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+    min-height: 40px; 
 }
 
-.project-tech {
+/* Rating y Valoración */
+.project-rating {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.project-rating i.fas.fa-star {
+    color: #FFB300; 
+}
+
+.project-rating span {
+    color: var(--color-primary-site);
     font-weight: 600;
-    color: var(--primary-color); /* Verde para la tecnología */
-    font-size: 0.85em;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-left: 8px; 
 }
 
-.project-tech span {
-    background-color: rgba(40, 167, 69, 0.1); /* Fondo claro con toque verde para la etiqueta de tecnología */
-    padding: 3px 8px;
-    border-radius: 4px;
-    display: inline-block;
-    margin-right: 5px;
-    color: var(--text-color-light);
+/* Tags de Tecnología */
+.project-tech-list dt {
+    color: var(--color-text-main);
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.project-tech-list dd span {
+    background-color: #2A2A2A; /* Fondo oscuro sutil */
+    color: var(--color-primary-site);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px; 
+    font-size: 0.7rem;
+    font-weight: 700;
 }
 
 .proyecto-acciones {
-    padding: 0 20px 20px;
+    padding: 1rem var(--spacing-default) 1.5rem;
     text-align: center;
-    margin-top: auto;
+    border-top: 1px solid #333333;
 }
 
-/* Estilo para la nota de "más proyectos" */
-.more-projects-note {
-    margin-top: 50px;
-    font-size: 1.1em;
-    color: var(--secondary-color);
-    font-style: italic;
+/* ---------------------------------------------------- */
+/* 7. Botones */
+/* ---------------------------------------------------- */
+.button-download {
+    display: block;
+    width: 100%;
+    background-color: var(--color-accent-cta);
+    color: var(--color-background-content); /* Texto blanco sobre verde CTA */
+    padding: 1rem 1rem;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25); 
+}
+
+.button-download:hover, .button-download:focus {
+    background-color: #49A42F;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------------------------------------------------- */
+/* 8. Otras Secciones (Fichas de Información y Cierre) */
+/* ---------------------------------------------------- */
+.about-section, .contact-section {
+    background-color: var(--color-background-content);
+    border-radius: var(--border-radius-item);
+    box-shadow: var(--shadow-item);
+    padding: 2.5rem; 
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.about-section h2, .contact-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--color-primary-site);
+}
+
+.social-link {
+    color: var(--color-primary-site); 
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.final-pitch {
+    color: var(--color-text-main);
+    font-size: 1.1rem;
+    padding: 1rem;
+    background-color: #2D2D2D; /* Fondo gris para resaltar sobre el negro */
+    border-radius: var(--border-radius-item);
+    border-left: 5px solid var(--color-primary-dark);
     text-align: center;
-    padding: 0 20px;
+    margin-top: 3rem;
 }
 
-/* --- Sección de Contacto --- */
-.contact-section {
-    background-color: var(--background-medium-dark);
-    padding: 60px 20px;
-    text-align: center;
-    margin-top: 40px;
-    box-shadow: var(--shadow-medium);
-    border-radius: 8px;
-    color: var(--text-color-light);
-}
-
-.contact-section h2 {
-    margin-bottom: 25px;
-    color: var(--text-color-light);
-}
-
-.contact-section p {
-    font-size: 1.1em;
-    margin-bottom: 30px;
-    color: var(--secondary-color);
-}
-
-.contact-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-.contact-list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.contact-profile-photo {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px solid var(--primary-color); /* Borde verde */
-    object-fit: cover;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
-}
-
-.contact-list a {
-    font-size: 1.2em;
-    font-weight: 600;
-    color: var(--text-color-light);
-    display: flex;
-    align-items: center;
-}
-
-.contact-list a:hover {
-    color: var(--primary-color); /* Verde al pasar el ratón */
-    text-decoration: underline;
-}
-
-.thanks-message {
-    font-style: italic;
-    color: var(--secondary-color);
-    margin-top: 40px;
-    font-size: 1em;
-}
-
-/* --- Pie de Página --- */
+/* ---------------------------------------------------- */
+/* 9. Pie de Página */
+/* ---------------------------------------------------- */
 .site-footer {
-    background-color: var(--header-footer-bg-color);
-    color: var(--text-color-light);
+    background-color: #0A0A0A; /* Negro muy oscuro */
+    border-top: 1px solid #333333;
+    color: var(--color-text-secondary);
     text-align: center;
-    padding: 30px 20px;
-    font-size: 0.9em;
-    margin-top: 40px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+    margin-top: 3rem;
 }
 
-.site-footer p {
-    margin-bottom: 5px;
-}
-
-/* --- Media Queries para Responsividad --- */
-@media (max-width: 768px) {
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.8em; }
-    h3 { font-size: 1.3em; }
-
-    .main-nav {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .site-title {
-        font-size: 1.5em;
-    }
-    .nav-links {
-        gap: 15px;
+/* ---------------------------------------------------- */
+/* 10. Media Queries (Responsiveness) */
+/* ---------------------------------------------------- */
+@media (max-width: 900px) {
+    main {
+        flex-direction: column; 
     }
 
-    .hero-content h2 {
-        font-size: 2.2em;
-    }
-    .hero-content p {
-        font-size: 1em;
-    }
-    .hero-section {
-        padding: 60px 20px;
-        min-height: 300px;
-    }
-
-    .proyectos-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .projects-section,
-    .contact-section {
-        padding: 40px 0;
-    }
-
-    .contact-list li {
-        flex-direction: row;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .site-header {
-        padding: 10px 15px;
-    }
-    .nav-links {
-        flex-direction: column;
-        text-align: center;
-        gap: 8px;
-    }
-    .site-title {
-        font-size: 1.3em;
-    }
-    .hero-content h2 {
-        font-size: 1.8em;
-    }
-    .hero-content p {
-        font-size: 0.9em;
-    }
-    .button {
-        padding: 10px 20px;
-        font-size: 0.9em;
-    }
-    .proyecto-details {
-        padding: 15px;
-    }
-    .button-download {
-        font-size: 0.8em;
-        padding: 6px 12px;
-    }
-    .contact-profile-photo {
-        width: 35px;
-        height: 35px;
-    }
-    .contact-list a {
-        font-size: 1em;
+    .sidebar {
+        width: 100%;
+        margin-bottom: var(--spacing-default);
     }
 }
